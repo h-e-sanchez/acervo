@@ -1,4 +1,4 @@
--- acervo — modelo relacional de Fundación Ejemplo (100% sintética).
+-- acervo — modelo relacional de Organización Ejemplo (100% sintética).
 -- Convenciones: tablas en singular y snake_case; clave sustituta <tabla>_id; claves de negocio con UNIQUE;
 -- fechas validadas con date(x) IS x: con "=", una fecha inválida da NULL y el CHECK la dejaría pasar;
 -- dominios cerrados con CHECK; fechas ISO 8601 (TEXT); montos en pesos enteros; sin columnas derivadas.
@@ -20,7 +20,7 @@ CREATE TABLE programa (
     programa_id  INTEGER PRIMARY KEY,
     codigo       TEXT    NOT NULL UNIQUE,
     nombre       TEXT    NOT NULL,
-    tipo         TEXT    NOT NULL CHECK (tipo IN ('Centro de día', 'Residencia', 'Escuela especial', 'Inclusión laboral')),
+    tipo         TEXT    NOT NULL CHECK (tipo IN ('Servicio de día', 'Servicio residencial', 'Programa educativo', 'Programa de empleo')),
     sede_id      INTEGER NOT NULL REFERENCES sede (sede_id)
 );
 
@@ -60,8 +60,8 @@ CREATE TABLE participante_identidad (          -- restringida: identifica a la p
 
 CREATE TABLE participante_salud (              -- restringida: dato personal sensible
     participante_id       INTEGER PRIMARY KEY REFERENCES participante (participante_id),
-    grado_apoyo           TEXT    NOT NULL CHECK (grado_apoyo IN ('Intermitente', 'Limitado', 'Extenso', 'Generalizado')),
-    credencial_discapacidad INTEGER NOT NULL CHECK (credencial_discapacidad IN (0, 1)),
+    grado_apoyo           TEXT    NOT NULL CHECK (grado_apoyo IN ('Bajo', 'Medio', 'Alto', 'Muy alto')),
+    condicion_cronica     INTEGER NOT NULL CHECK (condicion_cronica IN (0, 1)),
     observacion_clinica   TEXT
 );
 

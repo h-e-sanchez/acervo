@@ -1,4 +1,4 @@
-"""Genera las exportaciones sintéticas de los sistemas de Fundación Ejemplo, con errores sembrados.
+"""Genera las exportaciones sintéticas de los sistemas de Organización Ejemplo, con errores sembrados.
 
 Cada archivo imita el formato típico de su sistema de origen (RUT con puntos, fechas DD-MM-AAAA,
 montos con separador de miles, "Sí"/"No" escritos a mano). Nada corresponde a personas reales.
@@ -26,8 +26,8 @@ NOMBRES = ["Camila", "Matías", "Valentina", "Benjamín", "Javiera", "Vicente", 
 APELLIDOS = ["González", "Muñoz", "Rojas", "Díaz", "Pérez", "Soto", "Contreras", "Silva", "Martínez", "Sepúlveda",
              "Morales", "Rodríguez", "López", "Fuentes", "Hernández", "Torres", "Araya", "Flores", "Espinoza", "Valenzuela"]
 COMUNAS = ["Ñuñoa", "Macul", "Peñalolén", "La Florida", "Maipú", "Cerrillos", "Pudahuel", "Providencia", "Viña del Mar", "Quilpué"]
-CARGOS = ["Educador(a) diferencial", "Terapeuta ocupacional", "Psicólogo(a)", "Técnico(a) en educación especial",
-          "Asistente social", "Auxiliar de residencia", "Coordinador(a) de programa", "Analista contable"]
+CARGOS = ["Educador(a)", "Terapeuta ocupacional", "Psicólogo(a)", "Técnico(a) de apoyo",
+          "Asistente social", "Auxiliar de servicio residencial", "Coordinador(a) de programa", "Analista contable"]
 PRESUPUESTO = {"610101": (9_000_000, 22_000_000), "620101": (350_000, 900_000), "620201": (600_000, 2_400_000),
                "620301": (200_000, 1_100_000)}
 
@@ -80,7 +80,7 @@ def main() -> None:
     for i in range(150):
         prog = programas[i % len(programas)]
         tipo = next(p["tipo"] for p in MAESTROS["programas"] if p["codigo"] == prog)
-        edad = rng.randint(6, 17) if tipo == "Escuela especial" else rng.randint(18, 68)
+        edad = rng.randint(6, 17) if tipo == "Programa educativo" else rng.randint(18, 68)
         nacimiento = CORTE - timedelta(days=edad * 365 + rng.randint(0, 364))
         ingreso = CORTE - timedelta(days=rng.randint(60, 2500))
         egreso = ingreso + timedelta(days=rng.randint(30, 400)) if rng.random() < 0.08 else None
@@ -91,8 +91,8 @@ def main() -> None:
                        "comuna": rng.choice(COMUNAS), "programa": prog, "fecha_ingreso": dmy(ingreso),
                        "fecha_egreso": dmy(egreso) if egreso else "",
                        "representante": f"{rng.choice(NOMBRES)} {rng.choice(APELLIDOS)}" if edad < 18 or rng.random() < 0.4 else "",
-                       "grado_apoyo": rng.choice(["Intermitente", "Limitado", "Extenso", "Generalizado"]),
-                       "credencial": rng.choice(["S", "N", "S"]), "observacion": ""})
+                       "grado_apoyo": rng.choice(["Bajo", "Medio", "Alto", "Muy alto"]),
+                       "condicion_cronica": rng.choice(["S", "N", "N"]), "observacion": ""})
     validos = list(fichas)
     # errores sembrados en las fichas
     malo = dict(fichas[10], rut=dv_errado(fichas[10]["rut"]))
@@ -166,7 +166,7 @@ def main() -> None:
     for i in range(64):
         nombre = f"{rng.choice(NOMBRES)} {rng.choice(APELLIDOS)}"
         colaboradores.append({"rut": rut(rng, usados), "nombre": nombre,
-                              "email": f"colaborador{i + 1:03d}@fundacion-ejemplo.cl", "cargo": rng.choice(CARGOS),
+                              "email": f"colaborador{i + 1:03d}@organizacion-ejemplo.cl", "cargo": rng.choice(CARGOS),
                               "centro_costo": centros[i % len(centros)],
                               "fecha_ingreso": dmy(CORTE - timedelta(days=rng.randint(30, 4000))),
                               "jornada": rng.choice([44, 44, 44, 30, 22])})

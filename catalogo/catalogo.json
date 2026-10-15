@@ -1,14 +1,14 @@
 {
-  "organizacion": "Fundación Ejemplo (sintética)",
+  "organizacion": "Organización Ejemplo (sintética)",
   "version": "2026-10-15",
   "niveles": [
     {"nivel": "Público", "descripcion": "Puede publicarse sin restricción: nombres de sedes y programas, cifras agregadas."},
-    {"nivel": "Interno", "descripcion": "Uso dentro de la fundación. No identifica personas: agregados, maestros y finanzas."},
+    {"nivel": "Interno", "descripcion": "Uso dentro de la organización. No identifica personas: agregados, maestros y finanzas."},
     {"nivel": "Personal", "descripcion": "Dato personal: identifica o hace identificable a una persona, aunque sea por un identificador sustituto (seudonimizado)."},
     {"nivel": "Sensible", "descripcion": "Dato personal sensible según la Ley 21.719, como los relativos a la salud. Acceso solo para quien lo necesita para atender a la persona."}
   ],
   "datasets": [
-    {"nombre": "sede", "capa": "Maestro", "dominio": "Estructura", "descripcion": "Sedes donde opera la fundación.",
+    {"nombre": "sede", "capa": "Maestro", "dominio": "Estructura", "descripcion": "Sedes donde opera la organización.",
      "dueno": "Dirección ejecutiva", "custodio": "Ingeniería de datos", "fuente": {"sistema": "Configuración institucional", "archivo": "maestros.json"},
      "frecuencia": "Al cambiar", "retencion": "Permanente",
      "columnas": {"sede_id": ["Identificador sustituto.", "Interno"], "codigo": ["Código de la sede (SE-NN).", "Público"],
@@ -17,7 +17,7 @@
      "dueno": "Dirección técnica", "custodio": "Ingeniería de datos", "fuente": {"sistema": "Configuración institucional", "archivo": "maestros.json"},
      "frecuencia": "Al cambiar", "retencion": "Permanente",
      "columnas": {"programa_id": ["Identificador sustituto.", "Interno"], "codigo": ["Código del programa.", "Público"],
-                  "nombre": ["Nombre del programa.", "Público"], "tipo": ["Línea de atención: centro de día, residencia, escuela especial o inclusión laboral.", "Público"],
+                  "nombre": ["Nombre del programa.", "Público"], "tipo": ["Línea de servicio: servicio de día, servicio residencial, programa educativo o programa de empleo.", "Público"],
                   "sede_id": ["Sede que ejecuta el programa.", "Interno"]}},
     {"nombre": "centro_costo", "capa": "Maestro", "dominio": "Finanzas", "descripcion": "Centros de costo contables y el programa al que imputan.",
      "dueno": "Dirección de administración y finanzas", "custodio": "Ingeniería de datos", "fuente": {"sistema": "Configuración institucional", "archivo": "maestros.json"},
@@ -52,8 +52,8 @@
      "dueno": "Dirección técnica", "custodio": "Delegado de protección de datos", "fuente": {"sistema": "Gestión de participantes", "archivo": "participantes.csv"},
      "frecuencia": "Diaria", "retencion": "Mientras participe y 5 años después del egreso (política interna de ejemplo)",
      "columnas": {"participante_id": ["Identificador sustituto que enlaza con participante.", "Sensible"],
-                  "grado_apoyo": ["Intensidad de los apoyos que requiere.", "Sensible"],
-                  "credencial_discapacidad": ["1 si cuenta con credencial de discapacidad.", "Sensible"],
+                  "grado_apoyo": ["Intensidad de los apoyos que requiere, según la evaluación del equipo.", "Sensible"],
+                  "condicion_cronica": ["1 si declara una condición de salud crónica.", "Sensible"],
                   "observacion_clinica": ["Texto libre del equipo clínico.", "Sensible"]}},
     {"nombre": "consentimiento", "capa": "Operacional", "dominio": "Gobierno de datos",
      "descripcion": "Consentimientos por finalidad, quién los otorgó y si fueron revocados. Un niño o niña no puede consentir por sí mismo.",
@@ -153,13 +153,13 @@
      "sql": "SELECT c.participante_id FROM v_consentimiento_vigente c JOIN participante p USING (participante_id) WHERE c.finalidad = 'Investigación y estadística' AND p.fecha_egreso IS NOT NULL AND julianday(:corte) - julianday(p.fecha_egreso) > 365"}
   ],
   "glosario": [
-    {"termino": "Participante", "definicion": "Persona que recibe apoyos en un programa de la fundación."},
-    {"termino": "Programa", "definicion": "Línea de atención en una sede: centro de día, residencia, escuela especial o inclusión laboral."},
+    {"termino": "Participante", "definicion": "Persona que recibe apoyos en un programa de la organización."},
+    {"termino": "Programa", "definicion": "Línea de servicio en una sede: servicio de día, servicio residencial, programa educativo o programa de empleo."},
     {"termino": "Tasa de asistencia", "definicion": "Sesiones con asistencia divididas por sesiones registradas en el mes."},
     {"termino": "Costo por participante", "definicion": "Gasto mensual del programa dividido por sus participantes del mes."},
     {"termino": "Dato personal sensible", "definicion": "Según la Ley 21.719, entre otros, los datos relativos a la salud, al perfil biológico humano y los biométricos, y los que revelan origen étnico o situación socioeconómica."},
     {"termino": "Seudonimización", "definicion": "Tratamiento que impide atribuir los datos a un titular sin información adicional guardada por separado y protegida (Ley 21.719)."},
-    {"termino": "Responsable de datos", "definicion": "Quien decide sobre los fines y medios del tratamiento: aquí, la fundación."},
+    {"termino": "Responsable de datos", "definicion": "Quien decide sobre los fines y medios del tratamiento: aquí, la organización."},
     {"termino": "Delegado de protección de datos", "definicion": "Persona designada para supervisar el cumplimiento dentro del modelo de prevención de infracciones (art. 49)."},
     {"termino": "Cuarentena", "definicion": "Registro de las filas de una fuente que no pasaron la validación y no se cargaron."}
   ]

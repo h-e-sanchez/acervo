@@ -1,5 +1,5 @@
 {
- "organizacion": "Fundación Ejemplo (sintética)",
+ "organizacion": "Organización Ejemplo (sintética)",
  "version": "2026-10-15",
  "niveles": [
   {
@@ -8,7 +8,7 @@
   },
   {
    "nivel": "Interno",
-   "descripcion": "Uso dentro de la fundación. No identifica personas: agregados, maestros y finanzas."
+   "descripcion": "Uso dentro de la organización. No identifica personas: agregados, maestros y finanzas."
   },
   {
    "nivel": "Personal",
@@ -158,11 +158,11 @@
  "glosario": [
   {
    "termino": "Participante",
-   "definicion": "Persona que recibe apoyos en un programa de la fundación."
+   "definicion": "Persona que recibe apoyos en un programa de la organización."
   },
   {
    "termino": "Programa",
-   "definicion": "Línea de atención en una sede: centro de día, residencia, escuela especial o inclusión laboral."
+   "definicion": "Línea de servicio en una sede: servicio de día, servicio residencial, programa educativo o programa de empleo."
   },
   {
    "termino": "Tasa de asistencia",
@@ -182,7 +182,7 @@
   },
   {
    "termino": "Responsable de datos",
-   "definicion": "Quien decide sobre los fines y medios del tratamiento: aquí, la fundación."
+   "definicion": "Quien decide sobre los fines y medios del tratamiento: aquí, la organización."
   },
   {
    "termino": "Delegado de protección de datos",
@@ -198,7 +198,7 @@
    "nombre": "sede",
    "capa": "Maestro",
    "dominio": "Estructura",
-   "descripcion": "Sedes donde opera la fundación.",
+   "descripcion": "Sedes donde opera la organización.",
    "dueno": "Dirección ejecutiva",
    "custodio": "Ingeniería de datos",
    "fuente": {
@@ -304,7 +304,7 @@
     },
     {
      "nombre": "tipo",
-     "descripcion": "Línea de atención: centro de día, residencia, escuela especial o inclusión laboral.",
+     "descripcion": "Línea de servicio: servicio de día, servicio residencial, programa educativo o programa de empleo.",
      "nivel": "Público",
      "tipo": "TEXT",
      "nulo": false,
@@ -604,7 +604,7 @@
     },
     {
      "nombre": "grado_apoyo",
-     "descripcion": "Intensidad de los apoyos que requiere.",
+     "descripcion": "Intensidad de los apoyos que requiere, según la evaluación del equipo.",
      "nivel": "Sensible",
      "tipo": "TEXT",
      "nulo": false,
@@ -612,8 +612,8 @@
      "fk": ""
     },
     {
-     "nombre": "credencial_discapacidad",
-     "descripcion": "1 si cuenta con credencial de discapacidad.",
+     "nombre": "condicion_cronica",
+     "descripcion": "1 si declara una condición de salud crónica.",
      "nivel": "Sensible",
      "tipo": "INTEGER",
      "nulo": false,

@@ -1,5 +1,5 @@
 {
-  "_nota": "Configuración institucional de Fundación Ejemplo (100% sintética): sedes, programas, centros de costo y actividades. Es la fuente de los maestros del modelo.",
+  "_nota": "Configuración institucional de Organización Ejemplo (100% sintética): sedes, programas, centros de costo y actividades. Es la fuente de los maestros del modelo.",
   "fecha_corte": "2026-09-30",
   "sedes": [
     {"codigo": "SE-01", "nombre": "Sede Central", "comuna": "Ñuñoa", "region": "Metropolitana"},
@@ -7,22 +7,22 @@
     {"codigo": "SE-03", "nombre": "Sede Costa", "comuna": "Viña del Mar", "region": "Valparaíso"}
   ],
   "programas": [
-    {"codigo": "PR-CD1", "nombre": "Centro de día Ñuñoa", "tipo": "Centro de día", "sede": "SE-01"},
-    {"codigo": "PR-ES1", "nombre": "Escuela especial Ñuñoa", "tipo": "Escuela especial", "sede": "SE-01"},
-    {"codigo": "PR-RE1", "nombre": "Residencia Maipú", "tipo": "Residencia", "sede": "SE-02"},
-    {"codigo": "PR-CD2", "nombre": "Centro de día Maipú", "tipo": "Centro de día", "sede": "SE-02"},
-    {"codigo": "PR-IL1", "nombre": "Inclusión laboral", "tipo": "Inclusión laboral", "sede": "SE-01"},
-    {"codigo": "PR-ES2", "nombre": "Escuela especial Viña del Mar", "tipo": "Escuela especial", "sede": "SE-03"}
+    {"codigo": "PR-CD1", "nombre": "Servicio de día Ñuñoa", "tipo": "Servicio de día", "sede": "SE-01"},
+    {"codigo": "PR-ES1", "nombre": "Programa educativo Ñuñoa", "tipo": "Programa educativo", "sede": "SE-01"},
+    {"codigo": "PR-RE1", "nombre": "Servicio residencial Maipú", "tipo": "Servicio residencial", "sede": "SE-02"},
+    {"codigo": "PR-CD2", "nombre": "Servicio de día Maipú", "tipo": "Servicio de día", "sede": "SE-02"},
+    {"codigo": "PR-IL1", "nombre": "Programa de empleo", "tipo": "Programa de empleo", "sede": "SE-01"},
+    {"codigo": "PR-ES2", "nombre": "Programa educativo Viña del Mar", "tipo": "Programa educativo", "sede": "SE-03"}
   ],
   "centros_costo": [
     {"codigo": "CC-100", "nombre": "Administración central", "programa": null},
     {"codigo": "CC-110", "nombre": "Tecnología y datos", "programa": null},
-    {"codigo": "CC-201", "nombre": "Centro de día Ñuñoa", "programa": "PR-CD1"},
-    {"codigo": "CC-202", "nombre": "Escuela especial Ñuñoa", "programa": "PR-ES1"},
-    {"codigo": "CC-203", "nombre": "Residencia Maipú", "programa": "PR-RE1"},
-    {"codigo": "CC-204", "nombre": "Centro de día Maipú", "programa": "PR-CD2"},
-    {"codigo": "CC-205", "nombre": "Inclusión laboral", "programa": "PR-IL1"},
-    {"codigo": "CC-206", "nombre": "Escuela especial Viña del Mar", "programa": "PR-ES2"}
+    {"codigo": "CC-201", "nombre": "Servicio de día Ñuñoa", "programa": "PR-CD1"},
+    {"codigo": "CC-202", "nombre": "Programa educativo Ñuñoa", "programa": "PR-ES1"},
+    {"codigo": "CC-203", "nombre": "Servicio residencial Maipú", "programa": "PR-RE1"},
+    {"codigo": "CC-204", "nombre": "Servicio de día Maipú", "programa": "PR-CD2"},
+    {"codigo": "CC-205", "nombre": "Programa de empleo", "programa": "PR-IL1"},
+    {"codigo": "CC-206", "nombre": "Programa educativo Viña del Mar", "programa": "PR-ES2"}
   ],
   "actividades": {
     "PR-CD1": ["Taller de cocina", "Taller de huerto", "Actividad física"],

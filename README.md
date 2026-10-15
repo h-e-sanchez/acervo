@@ -5,7 +5,7 @@
 **Demo:** <https://h-e-sanchez.github.io/acervo/> · **Catálogo:** <https://h-e-sanchez.github.io/acervo/catalogo.html>
 
 Parte del portafolio **Control de gestión, construido como software**, de Hernán Elías Sánchez. El caso es
-**Fundación Ejemplo**, una fundación ficticia con 3 sedes, 6 programas y datos 100% sintéticos.
+**Organización Ejemplo**, una organización ficticia con 3 sedes, 6 programas y datos 100% sintéticos.
 
 ## Características de ingeniería
 
@@ -45,7 +45,7 @@ sobre el texto publicado en LeyChile y no es asesoría legal.
 
 ## English
 
-A data governance showcase by Hernán Elías Sánchez for a fictitious Chilean foundation: a normalized
+A data governance showcase by Hernán Elías Sánchez for a fictitious Chilean organization: a normalized
 relational model with constraints and an auto-generated ER diagram, an ETL that quarantines invalid rows,
 privacy by design for Chile's data protection law (Law 21,719), a resilient client for a public REST API,
 and a metadata catalog checked against the real schema on every load. Standard library only; all data is

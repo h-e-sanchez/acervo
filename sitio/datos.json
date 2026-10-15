@@ -156,19 +156,19 @@
   "muestra": [
    {
     "seudonimo": "028a499778df8557",
-    "tipo_programa": "Centro de día",
+    "tipo_programa": "Servicio de día",
     "tramo_edad": "30-44",
     "tasa_asistencia": 0.75
    },
    {
     "seudonimo": "4e410878a21b2a6c",
-    "tipo_programa": "Centro de día",
+    "tipo_programa": "Servicio de día",
     "tramo_edad": "45-59",
     "tasa_asistencia": 0.75
    },
    {
     "seudonimo": "1a44f37c57dd8892",
-    "tipo_programa": "Escuela especial",
+    "tipo_programa": "Programa educativo",
     "tramo_edad": "0-13",
     "tasa_asistencia": 0.875
    }
@@ -178,7 +178,7 @@
   "v_asistencia_mensual": [
    {
     "programa_id": 1,
-    "programa": "Centro de día Ñuñoa",
+    "programa": "Servicio de día Ñuñoa",
     "mes": "2026-09",
     "participantes": 24,
     "asistencias": 153,
@@ -187,7 +187,7 @@
    },
    {
     "programa_id": 2,
-    "programa": "Escuela especial Ñuñoa",
+    "programa": "Programa educativo Ñuñoa",
     "mes": "2026-09",
     "participantes": 21,
     "asistencias": 146,
@@ -196,7 +196,7 @@
    },
    {
     "programa_id": 3,
-    "programa": "Residencia Maipú",
+    "programa": "Servicio residencial Maipú",
     "mes": "2026-09",
     "participantes": 23,
     "asistencias": 251,
@@ -205,7 +205,7 @@
    },
    {
     "programa_id": 4,
-    "programa": "Centro de día Maipú",
+    "programa": "Servicio de día Maipú",
     "mes": "2026-09",
     "participantes": 19,
     "asistencias": 129,
@@ -214,7 +214,7 @@
    },
    {
     "programa_id": 5,
-    "programa": "Inclusión laboral",
+    "programa": "Programa de empleo",
     "mes": "2026-09",
     "participantes": 23,
     "asistencias": 160,
@@ -223,7 +223,7 @@
    },
    {
     "programa_id": 6,
-    "programa": "Escuela especial Viña del Mar",
+    "programa": "Programa educativo Viña del Mar",
     "mes": "2026-09",
     "participantes": 23,
     "asistencias": 151,
@@ -233,42 +233,42 @@
   ],
   "v_costo_por_participante": [
    {
-    "programa": "Centro de día Maipú",
-    "mes": "2026-09",
-    "gasto": 15192000,
-    "participantes": 19,
-    "costo_por_participante": 799579
-   },
-   {
-    "programa": "Centro de día Ñuñoa",
-    "mes": "2026-09",
-    "gasto": 11772000,
-    "participantes": 24,
-    "costo_por_participante": 490500
-   },
-   {
-    "programa": "Escuela especial Viña del Mar",
-    "mes": "2026-09",
-    "gasto": 16102000,
-    "participantes": 23,
-    "costo_por_participante": 700087
-   },
-   {
-    "programa": "Escuela especial Ñuñoa",
-    "mes": "2026-09",
-    "gasto": 22928000,
-    "participantes": 21,
-    "costo_por_participante": 1091810
-   },
-   {
-    "programa": "Inclusión laboral",
+    "programa": "Programa de empleo",
     "mes": "2026-09",
     "gasto": 16946000,
     "participantes": 23,
     "costo_por_participante": 736783
    },
    {
-    "programa": "Residencia Maipú",
+    "programa": "Programa educativo Viña del Mar",
+    "mes": "2026-09",
+    "gasto": 16102000,
+    "participantes": 23,
+    "costo_por_participante": 700087
+   },
+   {
+    "programa": "Programa educativo Ñuñoa",
+    "mes": "2026-09",
+    "gasto": 22928000,
+    "participantes": 21,
+    "costo_por_participante": 1091810
+   },
+   {
+    "programa": "Servicio de día Maipú",
+    "mes": "2026-09",
+    "gasto": 15192000,
+    "participantes": 19,
+    "costo_por_participante": 799579
+   },
+   {
+    "programa": "Servicio de día Ñuñoa",
+    "mes": "2026-09",
+    "gasto": 11772000,
+    "participantes": 24,
+    "costo_por_participante": 490500
+   },
+   {
+    "programa": "Servicio residencial Maipú",
     "mes": "2026-09",
     "gasto": 20569000,
     "participantes": 23,

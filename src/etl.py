@@ -128,7 +128,7 @@ class Carga:
                                                           "apellidos": f["apellidos"], "fecha_nacimiento": nac.isoformat(),
                                                           "representante": f.get("representante") or None})
                 self._insertar("participante_salud", {"participante_id": pid, "grado_apoyo": f["grado_apoyo"],
-                                                      "credencial_discapacidad": int(f.get("credencial", "N").upper() == "S"),
+                                                      "condicion_cronica": int(f.get("condicion_cronica", "N").upper() == "S"),
                                                       "observacion_clinica": f.get("observacion") or None})
 
     def consentimientos(self, texto: str) -> None:

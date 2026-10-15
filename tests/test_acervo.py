@@ -70,7 +70,7 @@ def test_restricciones_del_esquema_rechazan_datos_invalidos(carga):
     con.execute("INSERT INTO centro_costo (codigo, nombre) VALUES ('CC-1', 'x')")  # así la fecha es lo único inválido
     for sql in ("INSERT INTO sede (codigo, nombre, comuna, region) VALUES ('SEDE1', 'x', 'y', 'z')",  # código fuera de patrón
                 "INSERT INTO programa (codigo, nombre, tipo, sede_id) VALUES ('P', 'x', 'Otro', 1)",  # tipo fuera del dominio
-                "INSERT INTO programa (codigo, nombre, tipo, sede_id) VALUES ('P', 'x', 'Residencia', 99)",  # FK inexistente
+                "INSERT INTO programa (codigo, nombre, tipo, sede_id) VALUES ('P', 'x', 'Servicio residencial', 99)",  # FK inexistente
                 ("INSERT INTO movimiento_contable (fecha, cuenta, centro_costo_id, monto, glosa, comprobante) "
                 "VALUES ('2026-13-01', '610101', 1, 10, 'g', 'c')")):  # fecha inválida
         with pytest.raises(sqlite3.IntegrityError):

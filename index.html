@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>acervo — gobierno de datos de una fundación</title>
-<meta name="description" content="Modelo relacional, protección de datos personales según la Ley 21.719, integración por API REST y un catálogo de metadatos, aplicados a una fundación sintética. Todo se prueba como código.">
-<meta property="og:title" content="acervo — gobierno de datos de una fundación">
+<title>acervo — gobierno de datos de una organización</title>
+<meta name="description" content="Modelo relacional, protección de datos personales según la Ley 21.719, integración por API REST y un catálogo de metadatos, aplicados a una organización sintética. Todo se prueba como código.">
+<meta property="og:title" content="acervo — gobierno de datos de una organización">
 <meta property="og:description" content="Del archivo de cada sistema a un modelo relacional gobernado: cuarentena, seudonimización, consentimientos, perfiles de acceso, API REST y catálogo de metadatos.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='800' font-size='20' fill='%231d6b47'%3Eac%3C/text%3E%3C/svg%3E">
 <link rel="preload" href="vendor/fonts/public-sans.woff2" as="font" type="font/woff2" crossorigin>
@@ -30,8 +30,8 @@
 
     <section id="contexto">
       <h2>El caso</h2>
-      <p><strong>Fundación Ejemplo</strong> (100% sintética) atiende a personas con discapacidad en 3 sedes y 6 programas:
-        centros de día, una residencia, escuelas especiales e inclusión laboral. Su información vive en seis lugares: el
+      <p><strong>Organización Ejemplo</strong> (100% sintética) presta servicios a personas en 3 sedes y 6 programas:
+        servicios de día, un servicio residencial, programas educativos y un programa de empleo. Su información vive en seis lugares: el
         sistema de gestión de participantes, una planilla compartida de asistencia, el sistema de RR.HH., el ERP
         contable, un formulario web de derechos y la configuración institucional. Hay datos de salud y de niños, niñas
         y adolescentes, así que el orden y la protección de los datos no son opcionales.</p>
@@ -204,10 +204,10 @@
     </section>
 
     <footer>
-      <p class="firma-pie">Parte del portafolio <em>Control de gestión, construido como software</em> · por <a href="https://www.linkedin.com/in/hern%C3%A1n-el%C3%ADas-s%C3%A1nchez-aguilera/" rel="noopener">Hernán Elías Sánchez</a> · Fundación Ejemplo es ficticia y sus datos son 100% sintéticos: ninguna persona, RUT ni institución real.</p>
+      <p class="firma-pie">Parte del portafolio <em>Control de gestión, construido como software</em> · por <a href="https://www.linkedin.com/in/hern%C3%A1n-el%C3%ADas-s%C3%A1nchez-aguilera/" rel="noopener">Hernán Elías Sánchez</a> · Organización Ejemplo es ficticia y sus datos son 100% sintéticos: ninguna persona, RUT ni institución real.</p>
       <p><a href="https://github.com/h-e-sanchez/acervo">Código en GitHub</a> · <a href="catalogo.html">Catálogo</a> · Licencia MIT</p>
       <p class="english"><strong>English:</strong> A data governance showcase by Hernán Elías Sánchez for a fictitious Chilean
-        foundation: a normalized relational model with constraints and an auto-generated ER diagram, an ETL that quarantines
+        organization: a normalized relational model with constraints and an auto-generated ER diagram, an ETL that quarantines
         invalid rows, privacy by design for Chile's new data protection law (Law 21,719: pseudonymization, consent by purpose,
         access profiles, a record of processing activities), a resilient client for a public REST API, and a metadata catalog
         checked against the real schema on every load. All data is synthetic.</p>
