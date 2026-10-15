@@ -1,0 +1,89 @@
+{
+ "uf": {
+  "version": "1.7.0",
+  "autor": "mindicador.cl",
+  "codigo": "uf",
+  "nombre": "Unidad de fomento (UF)",
+  "unidad_medida": "Pesos",
+  "serie": [
+   {
+    "fecha": "2026-10-15T03:00:00.000Z",
+    "valor": 41162.73
+   },
+   {
+    "fecha": "2026-10-14T03:00:00.000Z",
+    "valor": 41157.43
+   },
+   {
+    "fecha": "2026-10-13T03:00:00.000Z",
+    "valor": 41152.13
+   },
+   {
+    "fecha": "2026-10-12T03:00:00.000Z",
+    "valor": 41146.83
+   },
+   {
+    "fecha": "2026-10-11T03:00:00.000Z",
+    "valor": 41141.53
+   }
+  ]
+ },
+ "utm": {
+  "version": "1.7.0",
+  "autor": "mindicador.cl",
+  "codigo": "utm",
+  "nombre": "Unidad Tributaria Mensual (UTM)",
+  "unidad_medida": "Pesos",
+  "serie": [
+   {
+    "fecha": "2026-10-01T03:00:00.000Z",
+    "valor": 72151
+   },
+   {
+    "fecha": "2026-09-01T04:00:00.000Z",
+    "valor": 71721
+   },
+   {
+    "fecha": "2026-08-01T04:00:00.000Z",
+    "valor": 71649
+   },
+   {
+    "fecha": "2026-07-01T04:00:00.000Z",
+    "valor": 71649
+   },
+   {
+    "fecha": "2026-06-01T04:00:00.000Z",
+    "valor": 71506
+   }
+  ]
+ },
+ "dolar": {
+  "version": "1.7.0",
+  "autor": "mindicador.cl",
+  "codigo": "dolar",
+  "nombre": "Dólar observado",
+  "unidad_medida": "Pesos",
+  "serie": [
+   {
+    "fecha": "2026-10-15T03:00:00.000Z",
+    "valor": 987.03
+   },
+   {
+    "fecha": "2026-10-14T03:00:00.000Z",
+    "valor": 980.79
+   },
+   {
+    "fecha": "2026-10-13T03:00:00.000Z",
+    "valor": 978.61
+   },
+   {
+    "fecha": "2026-10-09T03:00:00.000Z",
+    "valor": 981.61
+   },
+   {
+    "fecha": "2026-10-08T03:00:00.000Z",
+    "valor": 979.85
+   }
+  ]
+ }
+}

@@ -1,0 +1,236 @@
+/* tema «Grafito» — copia idéntica en centinela, consulta, cartilla y conciliador; editar las cuatro a la vez.
+   Base y componentes compartidos del portafolio. Cada sitio carga este archivo y después su style.css,
+   que solo agrega lo propio y nunca redefine tokens. Guía: consulta/docs/guia-de-estilo.md.
+
+   Decisiones: neutros fríos, un solo acento verde bosque, Public Sans para todo (cifras con dígitos de
+   ancho fijo) y Geist Mono solo para código. Superficies con fondo sutil y sin borde, esquinas de 6 px,
+   sin sombras ni rieles laterales. «ok» va en gris: el color marca solo lo que pide atención.
+   Fuentes auto-alojadas en vendor/fonts/ (subset latin, OFL 1.1): el sitio no pide nada a otro servidor. */
+
+@font-face {
+  font-family: "Public Sans"; font-style: normal; font-weight: 400 700; font-display: swap;
+  src: url("vendor/fonts/public-sans.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Geist Mono"; font-style: normal; font-weight: 400 500; font-display: swap;
+  src: url("vendor/fonts/geist-mono.woff2") format("woff2");
+}
+
+/* ------------------------------------------------------------------ tokens */
+:root {
+  color-scheme: light;
+  --bg: #f7f8fa;
+  --surface: #ffffff;
+  --surface-2: #f0f2f5;      /* tarjetas, KPI, código, thead */
+  --border: #e3e6eb;
+  --border-strong: #c9ced6;
+  --text: #111418;
+  --muted: #5b636e;
+  --faint: #8a929c;
+  --accent: #1d6b47;         /* verde bosque */
+  --accent-weak: #e6f0eb;
+  --on-accent: #ffffff;
+  --ok: #5b636e;             /* dentro de rango: neutro */
+  --alerta: #a35f00;
+  --critica: #c2312b;
+
+  --sans: "Public Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Geist Mono", ui-monospace, "SFMono-Regular", Consolas, Menlo, monospace;
+
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.84rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.2rem;
+  --fs-xl: 1.5rem;
+  --fs-2xl: 2rem;
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 18px;
+  --sp-6: 24px;
+  --sp-8: 36px;
+  --celda: 4px 8px;
+  --r: 6px;
+  --r-chip: 4px;
+  --ancho-lectura: 820px;
+  --ancho-reporte: 1100px;
+  --focus: 2px solid var(--accent);
+  --t: 130ms ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0d0f12;
+    --surface: #14171c;
+    --surface-2: #1b1f25;
+    --border: #262b33;
+    --border-strong: #3a414c;
+    --text: #e8eaed;
+    --muted: #9aa2ad;
+    --faint: #6b737e;
+    --accent: #5cc995;
+    --accent-weak: #13261d;
+    --on-accent: #0d0f12;
+    --ok: #9aa2ad;
+    --alerta: #e0a33d;
+    --critica: #f0716b;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0d0f12;
+  --surface: #14171c;
+  --surface-2: #1b1f25;
+  --border: #262b33;
+  --border-strong: #3a414c;
+  --text: #e8eaed;
+  --muted: #9aa2ad;
+  --faint: #6b737e;
+  --accent: #5cc995;
+  --accent-weak: #13261d;
+  --on-accent: #0d0f12;
+  --ok: #9aa2ad;
+  --alerta: #e0a33d;
+  --critica: #f0716b;
+}
+
+/* ------------------------------------------------------------------ base */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 15px;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.55;
+}
+
+h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.015em; text-wrap: balance; }
+h1 { letter-spacing: -0.025em; }
+h2 { font-size: var(--fs-xl); margin: 0 0 var(--sp-3); }
+h3 { font-size: var(--fs-lg); margin: 0 0 var(--sp-2); font-weight: 600; }
+
+code, pre, kbd, samp, textarea { font-family: var(--mono); font-size: 0.88em; }
+:not(pre) > code { background: var(--surface-2); padding: 1px 5px; border-radius: var(--r-chip); }
+
+/* Cifras: misma fuente del texto, dígitos de ancho fijo para que las columnas se alineen. */
+.num, td.num, th.num, .cifra, .kpi-valor, .valor { font-variant-numeric: tabular-nums lining-nums; }
+td.num, th.num { text-align: right; white-space: nowrap; }
+
+a { color: var(--accent); text-decoration: underline; text-decoration-color: var(--border-strong); text-underline-offset: 2px; }
+a:hover { text-decoration-color: var(--accent); }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible,
+summary:focus-visible { outline: var(--focus); outline-offset: 2px; }
+
+main { max-width: var(--ancho-lectura); margin: 0 auto; padding: var(--sp-6) var(--sp-4) 56px; }
+main.ancho { max-width: var(--ancho-reporte); }
+
+section { margin-bottom: var(--sp-8); }
+.hint { color: var(--muted); font-size: var(--fs-sm); margin: 0 0 var(--sp-3); }
+.table-scroll { overflow-x: auto; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+
+/* ------------------------------------------------------------------ encabezado */
+/* Bloque (no flex): cada pieza va en su línea y el botón de tema queda absoluto arriba a la derecha. */
+.site-header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: var(--sp-4);
+  margin-bottom: var(--sp-6);
+  position: relative;
+}
+.site-header h1 { font-size: var(--fs-2xl); line-height: 1.1; margin: 0; padding-right: 72px; }
+.etiqueta-sitio { margin: 0 0 2px; font-size: var(--fs-sm); font-weight: 500; color: var(--accent); }
+.migas { margin: 0 0 var(--sp-2); font-size: var(--fs-sm); color: var(--muted); }
+.migas a { color: var(--muted); }
+.titular { margin: var(--sp-2) 0 0; max-width: 60ch; font-size: 1.3rem; font-weight: 600; line-height: 1.3; letter-spacing: -0.01em; text-wrap: balance; }
+.tagline { color: var(--muted); font-size: var(--fs-md); margin: var(--sp-1) 0 0; max-width: 64ch; }
+.firma { margin: var(--sp-1) 0 0; font-size: var(--fs-sm); color: var(--muted); }
+.firma a { color: var(--muted); }
+.firma-pie { color: var(--muted); font-size: var(--fs-sm); }
+@media (max-width: 600px) { .titular { font-size: 1.15rem; } .site-header h1 { font-size: 1.7rem; } }
+
+.theme-toggle {
+  position: absolute; right: 0; top: 0;
+  font-family: var(--sans); font-size: var(--fs-sm);
+  border: 1px solid var(--border-strong); border-radius: var(--r);
+  background: var(--surface); color: var(--muted);
+  padding: 3px 10px; cursor: pointer;
+  transition: color var(--t), border-color var(--t);
+}
+.theme-toggle:hover { color: var(--text); border-color: var(--text); }
+
+/* ------------------------------------------------------------------ superficies */
+.callout {
+  background: var(--accent-weak);
+  border-radius: var(--r);
+  padding: var(--sp-3) var(--sp-4);
+  font-size: var(--fs-sm);
+  margin-bottom: var(--sp-3);
+}
+.callout.pendiente { background: color-mix(in srgb, var(--alerta) 12%, var(--surface-2)); }
+
+/* ------------------------------------------------------------------ tablas */
+table { border-collapse: collapse; width: 100%; font-size: var(--fs-sm); }
+th, td { text-align: left; padding: var(--celda); border-bottom: 1px solid var(--border); vertical-align: top; }
+thead th, th { font-weight: 600; color: var(--muted); }
+thead th { border-bottom-color: var(--border-strong); }
+
+/* ------------------------------------------------------------------ estados: chip con punto */
+.estado {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 0.8em; font-weight: 500; padding: 1px 7px; border-radius: var(--r-chip); white-space: nowrap;
+}
+.estado::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex: none; }
+.estado.ok, .estado.neutro { color: var(--ok); background: color-mix(in srgb, var(--ok) 12%, transparent); }
+.estado.alerta { color: var(--alerta); background: color-mix(in srgb, var(--alerta) 12%, transparent); }
+.estado.critica { color: var(--critica); background: color-mix(in srgb, var(--critica) 12%, transparent); }
+
+/* ------------------------------------------------------------------ botones */
+.btn, .btn-primario {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--sans); font-size: var(--fs-sm); font-weight: 600; line-height: 1.4;
+  border: 1px solid var(--border-strong); border-radius: var(--r);
+  background: var(--surface); color: var(--text);
+  padding: 5px 12px; cursor: pointer; text-decoration: none;
+  transition: border-color var(--t), background var(--t), filter var(--t);
+}
+.btn:hover { border-color: var(--text); }
+.btn.primario, .btn-primario { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.btn.primario:hover, .btn-primario:hover { filter: brightness(1.08); }
+.btn:disabled { opacity: 0.55; cursor: progress; }
+
+/* ------------------------------------------------------------------ portafolio compartido */
+.portafolio-compartido { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--sp-3); }
+.sitio {
+  display: flex; flex-direction: column; gap: var(--sp-1); padding: var(--sp-3) var(--sp-4);
+  border: 1px solid transparent; border-radius: var(--r); background: var(--surface-2); color: var(--text);
+}
+.sitio h3 { margin: 0; font-size: 1.1rem; }
+.sitio p { margin: 0; font-size: var(--fs-sm); }
+.sitio .sitio-rol { display: flex; justify-content: space-between; align-items: center; gap: var(--sp-2); font-size: var(--fs-xs); color: var(--muted); }
+.sitio .sitio-desc { color: var(--muted); }
+.sitio .sitio-acciones { margin-top: auto; padding-top: var(--sp-2); display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2); }
+.sitio-acciones .sitio-boton, .sitio-acciones .sitio-github {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 12px; border-radius: var(--r); font-size: var(--fs-sm); font-weight: 600; text-decoration: none;
+}
+.sitio-acciones .sitio-boton { background: var(--accent); border: 1px solid var(--accent); color: var(--on-accent); }
+.sitio-acciones .sitio-boton:hover { filter: brightness(1.08); }
+.sitio-acciones .sitio-github { border: 1px solid var(--border-strong); color: var(--text); background: var(--surface); }
+.sitio-acciones .sitio-github:hover { border-color: var(--text); }
+.sitio-github svg { width: 15px; height: 15px; fill: currentColor; flex: none; }
+.sitio.actual { border-color: var(--text); }
+.sitio.actual .sitio-acciones .sitio-boton { background: transparent; color: var(--accent); }
+.sitio.proximo { background: transparent; border: 1px dashed var(--border-strong); }
+.sitio.proximo h3, .sitio.proximo .sitio-desc { color: var(--muted); }
+.estas-aqui { font-size: 0.7rem; font-weight: 600; color: var(--bg); background: var(--text); border-radius: var(--r-chip); padding: 1px 7px; }
+#acerca p { max-width: 68ch; }
+
+/* ------------------------------------------------------------------ pie */
+footer { border-top: 1px solid var(--border); padding-top: var(--sp-4); color: var(--faint); font-size: var(--fs-sm); }
+.english { color: var(--muted); font-size: var(--fs-sm); }

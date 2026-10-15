@@ -1,0 +1,18 @@
+tipo,fuente,fila,motivo
+cuarentena,participantes,11,RUT con dígito verificador inválido
+cuarentena,participantes,26,Fecha de egreso anterior al ingreso
+cuarentena,participantes,151,RUT duplicado
+calidad,R3,1,Consentimiento de investigación con participante egresado
+cuarentena,consentimientos,254,Consentimiento de niño o niña sin representante legal
+calidad,R1,2,Participante activo sin consentimiento de atención
+cuarentena,asistencia,6,Participante no registrado
+cuarentena,asistencia,31,Fecha posterior al corte
+cuarentena,asistencia,61,Marca de asistencia no reconocida
+cuarentena,asistencia,91,Fila duplicada
+cuarentena,asistencia,121,Actividad inexistente en el programa
+cuarentena,colaboradores,8,RUT con dígito verificador inválido
+cuarentena,colaboradores,21,Centro de costo inexistente
+cuarentena,colaboradores,34,Correo duplicado
+cuarentena,contabilidad,13,Movimiento sin monto
+cuarentena,contabilidad,45,Centro de costo inexistente
+calidad,R2,1,Solicitud de derechos abierta sobre el umbral interno

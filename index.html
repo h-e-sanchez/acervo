@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>acervo — gobierno de datos de una fundación</title>
+<meta name="description" content="Modelo relacional, protección de datos personales según la Ley 21.719, integración por API REST y un catálogo de metadatos, aplicados a una fundación sintética. Todo se prueba como código.">
+<meta property="og:title" content="acervo — gobierno de datos de una fundación">
+<meta property="og:description" content="Del archivo de cada sistema a un modelo relacional gobernado: cuarentena, seudonimización, consentimientos, perfiles de acceso, API REST y catálogo de metadatos.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='800' font-size='20' fill='%231d6b47'%3Eac%3C/text%3E%3C/svg%3E">
+<link rel="preload" href="vendor/fonts/public-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="tema.css?v=1">
+<link rel="stylesheet" href="style.css?v=1">
+<script src="tema.js?v=1" data-sitio="acervo"></script>
+<script src="analitica.js?v=1" data-sitio="acervo"></script>
+</head>
+<body>
+  <main class="ancho">
+    <header class="site-header">
+      <p class="etiqueta-sitio">Gobierno de datos · modelo, privacidad e integración</p>
+      <h1>acervo</h1>
+      <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Cambiar el tema">noche</button>
+      <p class="firma">por <a href="https://www.linkedin.com/in/hern%C3%A1n-el%C3%ADas-s%C3%A1nchez-aguilera/" rel="noopener">Hernán Elías Sánchez</a> · parte de su portafolio
+        <em>Control de gestión, construido como software</em></p>
+      <p class="tagline">Cómo se ordena la información de una organización que atiende personas: un modelo relacional que
+        no deja entrar datos inválidos, protección de datos personales pensada desde el diseño para la Ley 21.719,
+        integración con una API REST pública y un catálogo que documenta cada tabla y cada columna. Todo se prueba
+        como código.</p>
+    </header>
+
+    <section id="contexto">
+      <h2>El caso</h2>
+      <p><strong>Fundación Ejemplo</strong> (100% sintética) atiende a personas con discapacidad en 3 sedes y 6 programas:
+        centros de día, una residencia, escuelas especiales e inclusión laboral. Su información vive en seis lugares: el
+        sistema de gestión de participantes, una planilla compartida de asistencia, el sistema de RR.HH., el ERP
+        contable, un formulario web de derechos y la configuración institucional. Hay datos de salud y de niños, niñas
+        y adolescentes, así que el orden y la protección de los datos no son opcionales.</p>
+      <div class="kpis" id="kpis-flujo"></div>
+      <p class="hint">Cifras de la carga de ejemplo al corte del <span id="corte">—</span>.</p>
+    </section>
+
+    <section id="modelo">
+      <h2>1 · Modelo relacional</h2>
+      <p>Catorce tablas en tercera forma normal y cuatro vistas. Las tablas de identidad y de salud
+        (🔒) están separadas del resto: todo el modelo se relaciona por un identificador sustituto, y solo esas tablas
+        permiten saber quién es quién. El diagrama se genera desde el esquema real, así que no puede quedar desactualizado.</p>
+      <div class="erd" id="erd" aria-busy="true"></div>
+      <ul class="practicas">
+        <li><strong>Claves sustitutas y de negocio</strong>Cada tabla tiene su <code>&lt;tabla&gt;_id</code>; los códigos y el RUT
+          llevan <code>UNIQUE</code> para que no haya duplicados.<span class="prueba">test_cuarentena_coincide_con_la_verdad</span></li>
+        <li><strong>Dominios cerrados</strong>Tipos de programa, finalidades, derechos y estados con <code>CHECK</code>: un valor
+          fuera de la lista no entra.<span class="prueba">test_restricciones_del_esquema_rechazan_datos_invalidos</span></li>
+        <li><strong>Integridad referencial</strong>Claves foráneas activas en cada conexión; ninguna asistencia sin participante
+          ni movimiento sin centro de costo.<span class="prueba">test_integridad_referencial</span></li>
+        <li><strong>Fechas válidas y coherentes</strong>Fechas ISO verificadas con <code>date()</code>, y el egreso nunca antes del
+          ingreso.<span class="prueba">test_restricciones_del_esquema_rechazan_datos_invalidos</span></li>
+        <li><strong>Sin columnas derivadas</strong>La tasa de asistencia y el costo por participante se calculan en vistas, no se
+          guardan: no pueden quedar inconsistentes.<span class="prueba">modelo/esquema.sql</span></li>
+        <li><strong>Capa analítica sin personas</strong>Los tableros solo leen vistas agregadas, sin identificadores
+          individuales.<span class="prueba">test_capa_analitica_no_expone_identificadores_de_personas</span></li>
+      </ul>
+      <p>Así quedan los datos para un tablero: el costo mensual por participante de cada programa, calculado en la vista
+        <code>v_costo_por_participante</code>.</p>
+      <div class="table-scroll"><table id="tabla-costo"></table></div>
+      <p class="hint">El DDL completo está en <a href="modelo/esquema.sql"><code>modelo/esquema.sql</code></a> y corre en SQLite;
+        se lleva a PostgreSQL, SQL Server o BigQuery cambiando los tipos.</p>
+    </section>
+
+    <section id="integracion">
+      <h2>2 · Integración de fuentes (ETL)</h2>
+      <p>Cada exportación pasa por las mismas etapas: lectura tolerante (RUT con puntos, fechas DD-MM-AAAA, montos con
+        separador de miles, "Sí" escrito a mano), validación con reglas explícitas y carga. Lo que no pasa queda en
+        <strong>cuarentena</strong> con la fuente, la fila y el motivo, pero sin copiar el contenido, para no duplicar datos
+        personales. Con los datos de ejemplo quedan 14 filas en cuarentena, todas sembradas a propósito.</p>
+      <div class="bloques">
+        <div class="bloque"><h3>Por fuente</h3><table id="tabla-fuentes"></table></div>
+        <div class="bloque"><h3>Motivos de cuarentena</h3><table id="tabla-cuarentena"></table></div>
+      </div>
+      <h3>Reglas de calidad sobre los datos cargados</h3>
+      <p class="hint">Reglas de negocio que el esquema no puede expresar. Están escritas en SQL dentro del catálogo y se
+        ejecutan en cada carga.</p>
+      <div class="table-scroll"><table id="tabla-calidad"></table></div>
+    </section>
+
+    <section id="proteccion">
+      <h2>3 · Protección de datos personales</h2>
+      <div class="ley">
+        <p><strong>Ley 21.719</strong>, que regula la protección y el tratamiento de los datos personales y crea la Agencia de
+          Protección de Datos Personales. Se publicó el 13 de diciembre de 2024 y entra en vigencia el
+          <strong>1 de diciembre de 2026</strong>.</p>
+        <dl>
+          <dt>Principios (art. 3)</dt><dd>Licitud y lealtad, finalidad, proporcionalidad, calidad, responsabilidad, seguridad,
+            transparencia e información, y confidencialidad.</dd>
+          <dt>Derechos del titular</dt><dd>Acceso, rectificación, supresión y oposición; portabilidad (art. 9), bloqueo del
+            tratamiento (art. 8 ter) y no ser objeto de decisiones automatizadas (art. 8 bis).</dd>
+          <dt>Datos sensibles</dt><dd>Entre otros, los relativos a la salud, al perfil biológico humano y los biométricos, y los que
+            revelan origen étnico o situación socioeconómica.</dd>
+          <dt>Niños, niñas y adolescentes (art. 16 quáter)</dt><dd>Su tratamiento atiende a su interés superior y a su autonomía
+            progresiva; los datos de un niño o niña se tratan con la autorización de quien tiene su cuidado personal.</dd>
+          <dt>Vulneraciones (art. 14 sexies)</dt><dd>Se reportan a la Agencia por los medios más expeditos posibles y sin dilaciones
+            indebidas, cuando hay riesgo razonable para los titulares.</dd>
+          <dt>Evaluación de impacto (art. 15 ter)</dt><dd>Para tratamientos que probablemente impliquen un alto riesgo para los
+            titulares.</dd>
+          <dt>Modelo de prevención (art. 49)</dt><dd>Voluntario; si se adopta, incluye la designación de un delegado de protección
+            de datos.</dd>
+          <dt>Multas (art. 35)</dt><dd id="multas">Leves hasta 5.000 UTM, graves hasta 10.000 UTM y gravísimas hasta 20.000 UTM.</dd>
+        </dl>
+        <p class="hint">Resumen hecho sobre el texto publicado en la Biblioteca del Congreso Nacional (LeyChile). No es asesoría
+          legal: cada organización debe revisar sus tratamientos con su asesor.</p>
+      </div>
+
+      <h3>Cómo lo aplica el modelo</h3>
+      <div class="table-scroll"><table id="tabla-medidas">
+        <thead><tr><th>Principio u obligación</th><th>Medida concreta en acervo</th></tr></thead>
+        <tbody>
+          <tr><td>Finalidad</td><td>Cada consentimiento se registra por finalidad específica; la extracción para estudios solo toma a quien consintió esa finalidad.</td></tr>
+          <tr><td>Proporcionalidad</td><td>El modelo guarda el tramo de edad, no la fecha de nacimiento, fuera de la tabla de identidad; los estudios reciben solo lo mínimo.</td></tr>
+          <tr><td>Seguridad y confidencialidad</td><td>Identidad y salud en tablas propias, con perfiles de acceso por rol; seudonimización con HMAC y clave guardada aparte.</td></tr>
+          <tr><td>Calidad</td><td>Validación de RUT con dígito verificador, dominios cerrados y cuarentena de lo inválido.</td></tr>
+          <tr><td>Responsabilidad</td><td>Registro de tratamientos y catálogo con dueño y custodio por dataset, verificados en cada carga.</td></tr>
+          <tr><td>Niños, niñas y adolescentes</td><td>El ETL rechaza el consentimiento de un niño o niña que no otorgó su representante.</td></tr>
+          <tr><td>Derechos del titular</td><td>Las solicitudes se registran con su derecho y su estado; una regla de calidad avisa las abiertas sobre un umbral interno.</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>Perfiles de acceso</h3>
+      <p class="hint">Quién lee qué, derivado del catálogo. Un test falla si un rol sin autorización llega a un dataset con datos sensibles.</p>
+      <div class="table-scroll"><table class="matriz" id="tabla-acceso"></table></div>
+
+      <h3>Registro de actividades de tratamiento</h3>
+      <div class="table-scroll"><table id="tabla-registro"></table></div>
+
+      <h3>Datos para estudios, seudonimizados</h3>
+      <p id="estudio" class="hint"></p>
+    </section>
+
+    <section id="api">
+      <h2>4 · Integración por API REST</h2>
+      <p>Indicadores de Chile desde la API pública de <a href="https://mindicador.cl/" rel="noopener">mindicador.cl</a>, consultados
+        ahora desde tu navegador. La UTM de hoy pone en pesos las multas de la ley.</p>
+      <div class="kpis indicadores" id="kpis-api"></div>
+      <p class="estado-api" id="estado-api" role="status">Consultando la API…</p>
+      <details>
+        <summary>Ver la petición y la respuesta</summary>
+        <p><code id="url-api">GET https://mindicador.cl/api/utm</code></p>
+        <pre class="json" id="json-api"></pre>
+      </details>
+      <p>El cliente en Python, <code>src/indicadores.py</code>, aplica lo que separa una integración robusta de un script que
+        funciona una vez: tiempo de espera explícito, reintentos con espera exponencial solo ante errores de red o del
+        servidor, validación del contrato de la respuesta, caché con vencimiento y una muestra de respaldo cuando el
+        servicio no responde. El transporte es inyectable, así que sus seis tests corren sin red.</p>
+    </section>
+
+    <section id="documental">
+      <h2>5 · Repositorio documental</h2>
+      <p>El catálogo de metadatos documenta cada dataset: descripción, capa, dueño, custodio, sistema de origen, frecuencia,
+        retención, tratamientos y, por columna, tipo, nulabilidad, claves y nivel de clasificación (público, interno,
+        personal o sensible). El catálogo se contrasta con la base real en cada carga: una columna sin documentar o un dato
+        sensible fuera de una tabla restringida hacen fallar los tests.</p>
+      <div class="kpis" id="kpis-catalogo"></div>
+      <p><a class="btn primario" href="catalogo.html">Abrir el catálogo →</a></p>
+    </section>
+
+    <section id="portafolio" class="portafolio" aria-label="Portafolio">
+      <h2>Portafolio</h2>
+      <p class="hint"><strong>Control de gestión, construido como software</strong> · sitios de
+        Hernán Elías Sánchez: cada uno muestra una parte del mismo oficio.</p>
+      <div class="portafolio-compartido">
+        <article class="sitio">
+          <p class="sitio-rol">La vitrina</p>
+          <h3>centinela</h3>
+          <p class="sitio-desc">Reportes Power BI de control de gestión, personas, compensaciones, pricing, capital de trabajo, contratistas y mantenimiento, con datos sintéticos, el modelo y el DAX a la vista.</p>
+          <p class="sitio-acciones"><a class="sitio-boton" href="https://h-e-sanchez.github.io/centinela/">Ver centinela →</a> <a class="sitio-github" href="https://github.com/h-e-sanchez/centinela">GitHub</a></p>
+        </article>
+        <article class="sitio">
+          <p class="sitio-rol">El taller</p>
+          <h3>consulta</h3>
+          <p class="sitio-desc">SQL, perfilado y gráficos sobre CSV, Parquet o Excel, sin que el archivo salga de tu equipo.</p>
+          <p class="sitio-acciones"><a class="sitio-boton" href="https://h-e-sanchez.github.io/consulta/">Abrir consulta →</a> <a class="sitio-github" href="https://github.com/h-e-sanchez/consulta">GitHub</a></p>
+        </article>
+        <article class="sitio">
+          <p class="sitio-rol">La integración</p>
+          <h3>cuadratura</h3>
+          <p class="sitio-desc">Nómina contra SAP: rechazos, asiento de carga, reclasificaciones y un puente que cierra en $0.</p>
+          <p class="sitio-acciones"><a class="sitio-boton" href="https://h-e-sanchez.github.io/cuadratura/">Abrir cuadratura →</a> <a class="sitio-github" href="https://github.com/h-e-sanchez/cuadratura">GitHub</a></p>
+        </article>
+        <article class="sitio actual" aria-current="page">
+          <p class="sitio-rol">El gobierno de datos <span class="estas-aqui">Estás aquí</span></p>
+          <h3>acervo</h3>
+          <p class="sitio-desc">Modelo relacional, protección de datos personales, API REST y catálogo de metadatos.</p>
+          <p class="sitio-acciones"><a class="sitio-boton" href="#">Volver al inicio ↑</a> <a class="sitio-github" href="https://github.com/h-e-sanchez/acervo">GitHub</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="acerca">
+      <h2>Acerca de</h2>
+      <p>Soy Ingeniero Civil Industrial con 8 años en control de gestión, FP&amp;A y People Analytics. He diseñado la
+        infraestructura de datos de un área de personas, integrando sus sistemas por API, y sé lo que cuesta un dato mal
+        cargado cuando llega al tablero de la dirección. Este proyecto reúne lo que aplico al ordenar datos que identifican
+        personas: modelar bien, validar antes de cargar, proteger desde el diseño y documentar lo que existe.</p>
+      <p class="perfil-enlaces"><a href="https://www.linkedin.com/in/hern%C3%A1n-el%C3%ADas-s%C3%A1nchez-aguilera/" rel="noopener">LinkedIn</a> ·
+        <a href="https://github.com/h-e-sanchez" rel="noopener">GitHub</a></p>
+    </section>
+
+    <footer>
+      <p class="firma-pie">Parte del portafolio <em>Control de gestión, construido como software</em> · por <a href="https://www.linkedin.com/in/hern%C3%A1n-el%C3%ADas-s%C3%A1nchez-aguilera/" rel="noopener">Hernán Elías Sánchez</a> · Fundación Ejemplo es ficticia y sus datos son 100% sintéticos: ninguna persona, RUT ni institución real.</p>
+      <p><a href="https://github.com/h-e-sanchez/acervo">Código en GitHub</a> · <a href="catalogo.html">Catálogo</a> · Licencia MIT</p>
+      <p class="english"><strong>English:</strong> A data governance showcase by Hernán Elías Sánchez for a fictitious Chilean
+        foundation: a normalized relational model with constraints and an auto-generated ER diagram, an ETL that quarantines
+        invalid rows, privacy by design for Chile's new data protection law (Law 21,719: pseudonymization, consent by purpose,
+        access profiles, a record of processing activities), a resilient client for a public REST API, and a metadata catalog
+        checked against the real schema on every load. All data is synthetic.</p>
+      <p class="nota-analitica">Medimos visitas con <a href="https://www.goatcounter.com/">GoatCounter</a>, sin cookies ni datos personales.</p>
+    </footer>
+  </main>
+  <script src="app.js?v=1"></script>
+</body>
+</html>

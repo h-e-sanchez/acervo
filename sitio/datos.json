@@ -1,0 +1,279 @@
+{
+ "corte": "2026-09-30",
+ "tablas": {
+  "actividad": 13,
+  "asistencia": 1179,
+  "centro_costo": 8,
+  "colaborador": 61,
+  "colaborador_identidad": 61,
+  "consentimiento": 253,
+  "cuarentena": 14,
+  "movimiento_contable": 106,
+  "participante": 148,
+  "participante_identidad": 148,
+  "participante_salud": 148,
+  "programa": 6,
+  "sede": 3,
+  "solicitud_derecho": 9
+ },
+ "fuentes": [
+  {
+   "fuente": "participantes",
+   "leidas": 151,
+   "cuarentena": 3
+  },
+  {
+   "fuente": "consentimientos",
+   "leidas": 254,
+   "cuarentena": 1
+  },
+  {
+   "fuente": "asistencia",
+   "leidas": 1184,
+   "cuarentena": 5
+  },
+  {
+   "fuente": "colaboradores",
+   "leidas": 64,
+   "cuarentena": 3
+  },
+  {
+   "fuente": "contabilidad",
+   "leidas": 108,
+   "cuarentena": 2
+  },
+  {
+   "fuente": "solicitudes",
+   "leidas": 9,
+   "cuarentena": 0
+  }
+ ],
+ "cuarentena": [
+  {
+   "fuente": "asistencia",
+   "motivo": "Actividad inexistente en el programa",
+   "filas": 1
+  },
+  {
+   "fuente": "asistencia",
+   "motivo": "Fecha posterior al corte",
+   "filas": 1
+  },
+  {
+   "fuente": "asistencia",
+   "motivo": "Fila duplicada",
+   "filas": 1
+  },
+  {
+   "fuente": "asistencia",
+   "motivo": "Marca de asistencia no reconocida",
+   "filas": 1
+  },
+  {
+   "fuente": "asistencia",
+   "motivo": "Participante no registrado",
+   "filas": 1
+  },
+  {
+   "fuente": "colaboradores",
+   "motivo": "Centro de costo inexistente",
+   "filas": 1
+  },
+  {
+   "fuente": "colaboradores",
+   "motivo": "Correo duplicado",
+   "filas": 1
+  },
+  {
+   "fuente": "colaboradores",
+   "motivo": "RUT con dígito verificador inválido",
+   "filas": 1
+  },
+  {
+   "fuente": "consentimientos",
+   "motivo": "Consentimiento de niño o niña sin representante legal",
+   "filas": 1
+  },
+  {
+   "fuente": "contabilidad",
+   "motivo": "Centro de costo inexistente",
+   "filas": 1
+  },
+  {
+   "fuente": "contabilidad",
+   "motivo": "Movimiento sin monto",
+   "filas": 1
+  },
+  {
+   "fuente": "participantes",
+   "motivo": "Fecha de egreso anterior al ingreso",
+   "filas": 1
+  },
+  {
+   "fuente": "participantes",
+   "motivo": "RUT con dígito verificador inválido",
+   "filas": 1
+  },
+  {
+   "fuente": "participantes",
+   "motivo": "RUT duplicado",
+   "filas": 1
+  }
+ ],
+ "calidad": [
+  {
+   "id": "R1",
+   "nombre": "Participante activo sin consentimiento de atención",
+   "descripcion": "Todo participante activo debe tener un consentimiento vigente para la finalidad de atención del programa.",
+   "casos": 2
+  },
+  {
+   "id": "R2",
+   "nombre": "Solicitud de derechos abierta sobre el umbral interno",
+   "descripcion": "Solicitudes sin respuesta con más de 30 días corridos desde su recepción. El umbral es interno y conservador: el plazo legal lo fija la ley y su reglamento.",
+   "casos": 1
+  },
+  {
+   "id": "R3",
+   "nombre": "Consentimiento de investigación con participante egresado",
+   "descripcion": "Los datos de un participante egresado no deben seguir alimentando estudios si su consentimiento sigue abierto sin revisión.",
+   "casos": 1
+  }
+ ],
+ "catalogo": {
+  "problemas": [],
+  "datasets": 18,
+  "columnas": 89
+ },
+ "estudio": {
+  "filas": 53,
+  "columnas": [
+   "seudonimo",
+   "tipo_programa",
+   "tramo_edad",
+   "tasa_asistencia"
+  ],
+  "muestra": [
+   {
+    "seudonimo": "028a499778df8557",
+    "tipo_programa": "Centro de día",
+    "tramo_edad": "30-44",
+    "tasa_asistencia": 0.75
+   },
+   {
+    "seudonimo": "4e410878a21b2a6c",
+    "tipo_programa": "Centro de día",
+    "tramo_edad": "45-59",
+    "tasa_asistencia": 0.75
+   },
+   {
+    "seudonimo": "1a44f37c57dd8892",
+    "tipo_programa": "Escuela especial",
+    "tramo_edad": "0-13",
+    "tasa_asistencia": 0.875
+   }
+  ]
+ },
+ "vistas": {
+  "v_asistencia_mensual": [
+   {
+    "programa_id": 1,
+    "programa": "Centro de día Ñuñoa",
+    "mes": "2026-09",
+    "participantes": 24,
+    "asistencias": 153,
+    "sesiones_programadas": 192,
+    "tasa_asistencia": 0.7969
+   },
+   {
+    "programa_id": 2,
+    "programa": "Escuela especial Ñuñoa",
+    "mes": "2026-09",
+    "participantes": 21,
+    "asistencias": 146,
+    "sesiones_programadas": 168,
+    "tasa_asistencia": 0.869
+   },
+   {
+    "programa_id": 3,
+    "programa": "Residencia Maipú",
+    "mes": "2026-09",
+    "participantes": 23,
+    "asistencias": 251,
+    "sesiones_programadas": 299,
+    "tasa_asistencia": 0.8395
+   },
+   {
+    "programa_id": 4,
+    "programa": "Centro de día Maipú",
+    "mes": "2026-09",
+    "participantes": 19,
+    "asistencias": 129,
+    "sesiones_programadas": 152,
+    "tasa_asistencia": 0.8487
+   },
+   {
+    "programa_id": 5,
+    "programa": "Inclusión laboral",
+    "mes": "2026-09",
+    "participantes": 23,
+    "asistencias": 160,
+    "sesiones_programadas": 184,
+    "tasa_asistencia": 0.8696
+   },
+   {
+    "programa_id": 6,
+    "programa": "Escuela especial Viña del Mar",
+    "mes": "2026-09",
+    "participantes": 23,
+    "asistencias": 151,
+    "sesiones_programadas": 184,
+    "tasa_asistencia": 0.8207
+   }
+  ],
+  "v_costo_por_participante": [
+   {
+    "programa": "Centro de día Maipú",
+    "mes": "2026-09",
+    "gasto": 15192000,
+    "participantes": 19,
+    "costo_por_participante": 799579
+   },
+   {
+    "programa": "Centro de día Ñuñoa",
+    "mes": "2026-09",
+    "gasto": 11772000,
+    "participantes": 24,
+    "costo_por_participante": 490500
+   },
+   {
+    "programa": "Escuela especial Viña del Mar",
+    "mes": "2026-09",
+    "gasto": 16102000,
+    "participantes": 23,
+    "costo_por_participante": 700087
+   },
+   {
+    "programa": "Escuela especial Ñuñoa",
+    "mes": "2026-09",
+    "gasto": 22928000,
+    "participantes": 21,
+    "costo_por_participante": 1091810
+   },
+   {
+    "programa": "Inclusión laboral",
+    "mes": "2026-09",
+    "gasto": 16946000,
+    "participantes": 23,
+    "costo_por_participante": 736783
+   },
+   {
+    "programa": "Residencia Maipú",
+    "mes": "2026-09",
+    "gasto": 20569000,
+    "participantes": 23,
+    "costo_por_participante": 894304
+   }
+  ]
+ }
+}

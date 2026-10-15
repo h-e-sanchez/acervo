@@ -1,0 +1,65 @@
+rut,nombre,email,cargo,centro_costo,fecha_ingreso,jornada
+33.821.003-5,Fernanda Soto,colaborador001@fundacion-ejemplo.cl,Terapeuta ocupacional,CC-100,28-10-2025,44
+34.936.062-4,Vicente Sepúlveda,colaborador002@fundacion-ejemplo.cl,Psicólogo(a),CC-110,28-07-2022,44
+33.843.228-3,Martín Soto,colaborador003@fundacion-ejemplo.cl,Asistente social,CC-201,11-07-2018,44
+34.287.505-K,Tomás González,colaborador004@fundacion-ejemplo.cl,Terapeuta ocupacional,CC-202,19-05-2022,30
+34.788.028-0,Isidora Díaz,colaborador005@fundacion-ejemplo.cl,Psicólogo(a),CC-203,02-12-2021,44
+33.011.696-K,Camila Silva,colaborador006@fundacion-ejemplo.cl,Auxiliar de residencia,CC-204,31-07-2018,44
+34.922.026-1,Cristóbal Fuentes,colaborador007@fundacion-ejemplo.cl,Auxiliar de residencia,CC-205,03-06-2022,22
+34.854.393-1,Vicente Hernández,colaborador008@fundacion-ejemplo.cl,Asistente social,CC-206,27-07-2016,44
+33.080.294-4,Benjamín Fuentes,colaborador009@fundacion-ejemplo.cl,Educador(a) diferencial,CC-100,17-06-2025,22
+34.761.585-4,Diego Fuentes,colaborador010@fundacion-ejemplo.cl,Terapeuta ocupacional,CC-110,14-03-2021,22
+34.741.968-0,Joaquín Pérez,colaborador011@fundacion-ejemplo.cl,Terapeuta ocupacional,CC-201,18-08-2025,22
+33.899.947-K,Cristóbal Silva,colaborador012@fundacion-ejemplo.cl,Educador(a) diferencial,CC-202,20-01-2017,44
+33.547.961-0,Antonia Valenzuela,colaborador013@fundacion-ejemplo.cl,Psicólogo(a),CC-203,24-10-2017,44
+33.423.339-1,Martín López,colaborador014@fundacion-ejemplo.cl,Coordinador(a) de programa,CC-204,18-05-2021,44
+33.118.506-K,Javiera Silva,colaborador015@fundacion-ejemplo.cl,Psicólogo(a),CC-205,20-02-2025,44
+34.787.339-K,Ignacio Rojas,colaborador016@fundacion-ejemplo.cl,Educador(a) diferencial,CC-206,02-10-2020,44
+33.000.759-1,Tomás Silva,colaborador017@fundacion-ejemplo.cl,Auxiliar de residencia,CC-100,29-04-2020,44
+33.406.053-5,Benjamín Fuentes,colaborador018@fundacion-ejemplo.cl,Educador(a) diferencial,CC-110,13-02-2019,44
+33.581.571-8,Antonia Hernández,colaborador019@fundacion-ejemplo.cl,Coordinador(a) de programa,CC-201,10-12-2018,44
+33.047.606-0,Constanza Rodríguez,colaborador020@fundacion-ejemplo.cl,Psicólogo(a),CC-202,15-02-2021,44
+34.950.207-0,Tomás Martínez,colaborador021@fundacion-ejemplo.cl,Auxiliar de residencia,CC-999,26-01-2022,44
+34.309.895-2,Felipe Díaz,colaborador022@fundacion-ejemplo.cl,Técnico(a) en educación especial,CC-204,14-11-2015,44
+34.535.502-2,Isidora López,colaborador023@fundacion-ejemplo.cl,Terapeuta ocupacional,CC-205,05-12-2017,44
+33.554.086-7,Vicente Muñoz,colaborador024@fundacion-ejemplo.cl,Asistente social,CC-206,19-01-2026,30
+34.541.638-2,Camila González,colaborador025@fundacion-ejemplo.cl,Asistente social,CC-100,22-12-2025,30
+33.671.984-4,Vicente Hernández,colaborador026@fundacion-ejemplo.cl,Psicólogo(a),CC-110,06-12-2024,30
+34.251.139-2,Josefa Contreras,colaborador027@fundacion-ejemplo.cl,Auxiliar de residencia,CC-201,08-05-2018,30
+33.319.414-7,Matías López,colaborador028@fundacion-ejemplo.cl,Educador(a) diferencial,CC-202,28-05-2020,44
+33.009.964-K,Martín Contreras,colaborador029@fundacion-ejemplo.cl,Analista contable,CC-203,07-05-2021,44
+34.792.446-6,Vicente Flores,colaborador030@fundacion-ejemplo.cl,Psicólogo(a),CC-204,23-11-2019,44
+34.129.371-5,Camila Araya,colaborador031@fundacion-ejemplo.cl,Asistente social,CC-205,21-09-2022,44
+33.073.740-9,Florencia Díaz,colaborador032@fundacion-ejemplo.cl,Coordinador(a) de programa,CC-206,27-09-2018,22
+34.890.650-K,Tomás Morales,colaborador033@fundacion-ejemplo.cl,Analista contable,CC-100,22-04-2023,44
+34.113.945-7,Diego Soto,colaborador033@fundacion-ejemplo.cl,Analista contable,CC-110,07-07-2020,30
+33.768.394-0,Javiera Martínez,colaborador035@fundacion-ejemplo.cl,Auxiliar de residencia,CC-201,13-02-2026,44
+33.932.683-5,Martín Fuentes,colaborador036@fundacion-ejemplo.cl,Psicólogo(a),CC-202,25-04-2018,44
+34.754.761-1,Felipe Silva,colaborador037@fundacion-ejemplo.cl,Educador(a) diferencial,CC-203,28-02-2017,22
+34.579.474-3,Cristóbal Espinoza,colaborador038@fundacion-ejemplo.cl,Auxiliar de residencia,CC-204,19-06-2019,30
+33.381.895-7,Joaquín Araya,colaborador039@fundacion-ejemplo.cl,Terapeuta ocupacional,CC-205,09-05-2021,44
+34.925.156-6,Florencia Flores,colaborador040@fundacion-ejemplo.cl,Técnico(a) en educación especial,CC-206,11-01-2025,30
+33.477.759-6,Valentina González,colaborador041@fundacion-ejemplo.cl,Psicólogo(a),CC-100,24-03-2018,44
+34.823.873-6,Antonia Díaz,colaborador042@fundacion-ejemplo.cl,Educador(a) diferencial,CC-110,08-08-2024,44
+33.510.267-3,Josefa Soto,colaborador043@fundacion-ejemplo.cl,Psicólogo(a),CC-201,06-12-2017,44
+33.266.872-2,Constanza Torres,colaborador044@fundacion-ejemplo.cl,Educador(a) diferencial,CC-202,20-07-2019,22
+33.773.464-2,Catalina Díaz,colaborador045@fundacion-ejemplo.cl,Educador(a) diferencial,CC-203,27-08-2025,22
+33.845.776-6,Diego Espinoza,colaborador046@fundacion-ejemplo.cl,Auxiliar de residencia,CC-204,18-05-2019,44
+34.931.841-5,Felipe Morales,colaborador047@fundacion-ejemplo.cl,Auxiliar de residencia,CC-205,10-08-2024,44
+33.714.004-1,Felipe Hernández,colaborador048@fundacion-ejemplo.cl,Técnico(a) en educación especial,CC-206,06-03-2016,44
+33.943.214-7,Javiera Sepúlveda,colaborador049@fundacion-ejemplo.cl,Analista contable,CC-100,12-05-2023,44
+33.906.908-5,Benjamín Soto,colaborador050@fundacion-ejemplo.cl,Técnico(a) en educación especial,CC-110,29-07-2020,30
+34.747.897-0,Cristóbal Torres,colaborador051@fundacion-ejemplo.cl,Psicólogo(a),CC-201,11-12-2017,44
+33.677.649-K,Constanza Muñoz,colaborador052@fundacion-ejemplo.cl,Terapeuta ocupacional,CC-202,30-11-2020,44
+34.965.173-4,Cristóbal González,colaborador053@fundacion-ejemplo.cl,Psicólogo(a),CC-203,19-06-2026,22
+33.072.924-4,Matías Rojas,colaborador054@fundacion-ejemplo.cl,Asistente social,CC-204,05-01-2023,44
+33.658.062-5,Matías López,colaborador055@fundacion-ejemplo.cl,Terapeuta ocupacional,CC-205,06-07-2016,30
+33.281.978-K,Matías Silva,colaborador056@fundacion-ejemplo.cl,Psicólogo(a),CC-206,24-04-2026,44
+33.916.370-7,Benjamín Soto,colaborador057@fundacion-ejemplo.cl,Educador(a) diferencial,CC-100,10-06-2019,22
+33.096.214-3,Valentina Valenzuela,colaborador058@fundacion-ejemplo.cl,Auxiliar de residencia,CC-110,13-11-2018,44
+34.568.502-2,Matías Soto,colaborador059@fundacion-ejemplo.cl,Educador(a) diferencial,CC-201,12-04-2018,30
+34.915.600-8,Catalina Espinoza,colaborador060@fundacion-ejemplo.cl,Coordinador(a) de programa,CC-202,17-05-2025,44
+33.284.342-7,Antonia Contreras,colaborador061@fundacion-ejemplo.cl,Analista contable,CC-203,06-03-2019,44
+34.513.414-K,Cristóbal Rojas,colaborador062@fundacion-ejemplo.cl,Asistente social,CC-204,03-06-2025,22
+34.888.329-1,Camila Flores,colaborador063@fundacion-ejemplo.cl,Asistente social,CC-205,05-01-2016,22
+33.107.715-1,Fernanda Contreras,colaborador064@fundacion-ejemplo.cl,Psicólogo(a),CC-206,24-11-2024,22
