@@ -9,24 +9,66 @@
 <meta property="og:description" content="Del archivo de cada sistema a un modelo relacional gobernado: cuarentena, seudonimización, consentimientos, perfiles de acceso, API REST y catálogo de metadatos.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='800' font-size='20' fill='%231d6b47'%3Eac%3C/text%3E%3C/svg%3E">
 <link rel="preload" href="vendor/fonts/public-sans.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="tema.css?v=1">
-<link rel="stylesheet" href="style.css?v=1">
-<script src="tema.js?v=1" data-sitio="acervo"></script>
+<link rel="stylesheet" href="tema.css?v=2">
+<link rel="stylesheet" href="style.css?v=2">
+<script src="tema.js?v=2" data-sitio="acervo"></script>
 <script src="analitica.js?v=1" data-sitio="acervo"></script>
 </head>
 <body>
+  <header class="barra-sup">
+    <div class="contenedor barra-interior">
+      <a class="marca" href="https://h-e-sanchez.github.io/centinela/">
+        <span class="marca-nombre">Control de gestión, construido como software</span>
+        <span class="marca-bajada">por Hernán Elías Sánchez</span>
+      </a>
+      <nav class="sitios" aria-label="Sitios del portafolio">
+        <a href="https://h-e-sanchez.github.io/centinela/">centinela</a>
+        <a href="https://h-e-sanchez.github.io/consulta/">consulta</a>
+        <a href="https://h-e-sanchez.github.io/cartilla/">cartilla</a>
+        <a href="https://h-e-sanchez.github.io/acervo/" aria-current="page">acervo</a>
+        <a href="https://h-e-sanchez.github.io/fiabilidad/">fiabilidad</a>
+        <a href="https://h-e-sanchez.github.io/cuadratura/">cuadratura</a>
+      </nav>
+      <div class="barra-iconos">
+        <button type="button" id="theme-toggle" class="icono-btn" aria-label="Cambiar el tema">
+          <svg class="luna" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20.9 13a9 9 0 0 1-9.9-9.9A9 9 0 1 0 20.9 13Z"/></svg>
+          <svg class="sol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
+        </button>
+        <a class="icono-btn" href="https://github.com/h-e-sanchez/acervo" aria-label="Código de acervo en GitHub" title="Código en GitHub"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.65 7.65 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg></a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="en-pagina" aria-label="En esta página">
+    <div class="contenedor">
+      <p class="en-pagina-titulo">En esta página</p>
+      <ul>
+        <li><a href="#contexto">El caso</a></li>
+        <li><a href="#modelo">Modelo</a></li>
+        <li><a href="#integracion">Integración</a></li>
+        <li><a href="#proteccion">Protección de datos</a></li>
+        <li><a href="#api">API REST</a></li>
+        <li><a href="#documental">Repositorio</a></li>
+        <li><a href="#portafolio">Portafolio</a></li>
+        <li><a href="#acerca">Acerca de</a></li>
+      </ul>
+    </div>
+  </nav>
   <main class="ancho">
-    <header class="site-header">
-      <p class="etiqueta-sitio">Gobierno de datos · modelo, privacidad e integración</p>
-      <h1>acervo</h1>
-      <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Cambiar el tema">noche</button>
-      <p class="firma">por <a href="https://www.linkedin.com/in/hern%C3%A1n-el%C3%ADas-s%C3%A1nchez-aguilera/" rel="noopener">Hernán Elías Sánchez</a> · parte de su portafolio
-        <em>Control de gestión, construido como software</em></p>
-      <p class="tagline">Cómo se ordena la información de una organización que atiende personas: un modelo relacional que
+    <section class="portada" id="portada">
+      <p class="eyebrow"><strong>acervo</strong> · gobierno de datos: modelo, privacidad e integración</p>
+      <h1>Datos de personas en orden y protegidos desde el diseño.</h1>
+      <p class="lede">Cómo se ordena la información de una organización que atiende personas: un modelo relacional que
         no deja entrar datos inválidos, protección de datos personales pensada desde el diseño para la Ley 21.719,
         integración con una API REST pública y un catálogo que documenta cada tabla y cada columna. Todo se prueba
         como código.</p>
-    </header>
+      <div class="acciones">
+        <a class="btn primario" href="#modelo">Ver el modelo</a>
+        <a class="enlace-texto" href="catalogo.html">Abrir el catálogo →</a>
+      </div>
+      <p class="firma">por <a href="https://www.linkedin.com/in/hern%C3%A1n-el%C3%ADas-s%C3%A1nchez-aguilera/" rel="noopener">Hernán Elías Sánchez</a> · Ingeniero Civil Industrial</p>
+    </section>
+
 
     <section id="contexto">
       <h2>El caso</h2>
@@ -163,32 +205,44 @@
 
     <section id="portafolio" class="portafolio" aria-label="Portafolio">
       <h2>Portafolio</h2>
-      <p class="hint"><strong>Control de gestión, construido como software</strong> · sitios de
-        Hernán Elías Sánchez: cada uno muestra una parte del mismo oficio.</p>
+      <p class="seccion-intro">Seis sitios, un mismo oficio: control de gestión construido como software. Todos usan datos
+        100% sintéticos.</p>
       <div class="portafolio-compartido">
         <article class="sitio">
+          <h3><a href="https://h-e-sanchez.github.io/centinela/">centinela</a></h3>
           <p class="sitio-rol">La vitrina</p>
-          <h3>centinela</h3>
-          <p class="sitio-desc">Reportes Power BI de control de gestión, personas, compensaciones, pricing, capital de trabajo, contratistas y mantenimiento, con datos sintéticos, el modelo y el DAX a la vista.</p>
-          <p class="sitio-acciones"><a class="sitio-boton" href="https://h-e-sanchez.github.io/centinela/">Ver centinela →</a> <a class="sitio-github" href="https://github.com/h-e-sanchez/centinela">GitHub</a></p>
+          <p class="sitio-desc">Reportes Power BI de control de gestión, personas, compensaciones, pricing, capital de trabajo, contratistas y mantenimiento, con el modelo y el DAX a la vista.</p>
+          <p class="sitio-acciones"><a href="https://github.com/h-e-sanchez/centinela">Código en GitHub</a></p>
         </article>
         <article class="sitio">
+          <h3><a href="https://h-e-sanchez.github.io/consulta/">consulta</a></h3>
           <p class="sitio-rol">El taller</p>
-          <h3>consulta</h3>
           <p class="sitio-desc">SQL, perfilado y gráficos sobre CSV, Parquet o Excel, sin que el archivo salga de tu equipo.</p>
-          <p class="sitio-acciones"><a class="sitio-boton" href="https://h-e-sanchez.github.io/consulta/">Abrir consulta →</a> <a class="sitio-github" href="https://github.com/h-e-sanchez/consulta">GitHub</a></p>
+          <p class="sitio-acciones"><a href="https://github.com/h-e-sanchez/consulta">Código en GitHub</a></p>
         </article>
         <article class="sitio">
-          <p class="sitio-rol">La integración</p>
-          <h3>cuadratura</h3>
-          <p class="sitio-desc">Nómina contra SAP: rechazos, asiento de carga, reclasificaciones y un puente que cierra en $0.</p>
-          <p class="sitio-acciones"><a class="sitio-boton" href="https://h-e-sanchez.github.io/cuadratura/">Abrir cuadratura →</a> <a class="sitio-github" href="https://github.com/h-e-sanchez/cuadratura">GitHub</a></p>
+          <h3><a href="https://h-e-sanchez.github.io/cartilla/">cartilla</a></h3>
+          <p class="sitio-rol">El manual</p>
+          <p class="sitio-desc">Python y pandas para quien viene de Excel, con ejemplos que se ejecutan en el navegador.</p>
+          <p class="sitio-acciones"><a href="https://github.com/h-e-sanchez/cartilla">Código en GitHub</a></p>
         </article>
         <article class="sitio actual" aria-current="page">
-          <p class="sitio-rol">El gobierno de datos <span class="estas-aqui">Estás aquí</span></p>
-          <h3>acervo</h3>
+          <h3><a href="#portada">acervo</a></h3>
+          <p class="sitio-rol">El gobierno de datos</p>
           <p class="sitio-desc">Modelo relacional, protección de datos personales, API REST y catálogo de metadatos.</p>
-          <p class="sitio-acciones"><a class="sitio-boton" href="#">Volver al inicio ↑</a> <a class="sitio-github" href="https://github.com/h-e-sanchez/acervo">GitHub</a></p>
+          <p class="sitio-acciones"><a href="https://github.com/h-e-sanchez/acervo">Código en GitHub</a></p>
+        </article>
+        <article class="sitio">
+          <h3><a href="https://h-e-sanchez.github.io/fiabilidad/">fiabilidad</a></h3>
+          <p class="sitio-rol">El modelo</p>
+          <p class="sitio-desc">Mantenimiento contra fallas: cuatro brechas detectadas y un plan ajustado con cada cambio justificado.</p>
+          <p class="sitio-acciones"><a href="https://github.com/h-e-sanchez/fiabilidad">Código en GitHub</a></p>
+        </article>
+        <article class="sitio">
+          <h3><a href="https://h-e-sanchez.github.io/cuadratura/">cuadratura</a></h3>
+          <p class="sitio-rol">La integración</p>
+          <p class="sitio-desc">Nómina contra SAP: rechazos, asiento de carga, reclasificaciones y un puente que cierra en $0.</p>
+          <p class="sitio-acciones"><a href="https://github.com/h-e-sanchez/cuadratura">Código en GitHub</a></p>
         </article>
       </div>
     </section>
@@ -214,6 +268,6 @@
       <p class="nota-analitica">Medimos visitas con <a href="https://www.goatcounter.com/">GoatCounter</a>, sin cookies ni datos personales.</p>
     </footer>
   </main>
-  <script src="app.js?v=1"></script>
+  <script src="app.js?v=2"></script>
 </body>
 </html>

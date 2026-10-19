@@ -12,7 +12,7 @@
 
 /* indicadores */
 .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: var(--sp-3); margin: var(--sp-4) 0; }
-.kpi { background: var(--surface-2); border: 1px solid transparent; border-radius: var(--r); padding: var(--sp-3) var(--sp-4); }
+.kpi { border: 1px solid var(--border); border-radius: var(--r); padding: var(--sp-3) var(--sp-4); }
 .kpi .valor { font-size: var(--fs-xl); font-weight: 500; display: block; }
 .kpi .rotulo { font-size: var(--fs-sm); color: var(--muted); }
 .kpi.ok .valor { color: var(--ok); }
@@ -20,7 +20,7 @@
 
 /* puente y tablas */
 .bloques { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: var(--sp-4); margin: var(--sp-4) 0; }
-.bloque { background: var(--surface-2); border-radius: var(--r); padding: var(--sp-3); min-width: 0; }
+.bloque { border: 1px solid var(--border); border-radius: var(--r); padding: var(--sp-3); min-width: 0; }
 .bloque h3 { margin: 0 0 var(--sp-2); }
 tr.total td { font-weight: 600; border-top: 1px solid var(--border-strong); }
 tr.cuadra td { color: var(--ok); font-weight: 600; }
@@ -46,7 +46,7 @@ tr.descuadra td { color: var(--critica); font-weight: 600; }
 /* pasos del flujo y fases de trabajo */
 .flujo, .fases { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); gap: var(--sp-3); margin: var(--sp-4) 0;
   padding: 0; list-style: none; }
-.flujo li, .fases article { background: var(--surface-2); border-radius: var(--r); padding: var(--sp-3) var(--sp-4); }
+.flujo li, .fases article { border: 1px solid var(--border); border-radius: var(--r); padding: var(--sp-3) var(--sp-4); }
 .flujo strong, .fases h3 { display: block; margin: 0 0 4px; }
 .paso-num { color: var(--accent); font-size: var(--fs-sm); font-weight: 600; text-transform: uppercase; letter-spacing: .04em; margin: 0; }
 td code { white-space: nowrap; }
@@ -58,7 +58,7 @@ td code { white-space: nowrap; }
 .erd { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: var(--sp-3); overflow-x: auto; }
 .erd svg { display: block; min-width: 900px; width: 100%; height: auto; }
 .practicas { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: var(--sp-3); margin: var(--sp-4) 0; padding: 0; list-style: none; }
-.practicas li { background: var(--surface-2); border-radius: var(--r); padding: var(--sp-3) var(--sp-4); font-size: var(--fs-sm); }
+.practicas li { border: 1px solid var(--border); border-radius: var(--r); padding: var(--sp-3) var(--sp-4); font-size: var(--fs-sm); }
 .practicas strong { display: block; font-size: var(--fs-md, 1rem); margin-bottom: 4px; }
 .practicas .prueba { display: block; margin-top: var(--sp-2); color: var(--faint); font-family: var(--mono); font-size: 0.74rem; overflow-wrap: anywhere; }
 .ley { border-left: 3px solid var(--accent); background: var(--surface-2); border-radius: var(--r); padding: var(--sp-3) var(--sp-4); }
@@ -83,7 +83,7 @@ pre.json { background: var(--surface); border: 1px solid var(--border); border-r
 .buscador { display: flex; flex-wrap: wrap; gap: var(--sp-3); align-items: center; margin: var(--sp-4) 0; }
 .buscador input[type="search"] { font: inherit; padding: 6px 10px; border: 1px solid var(--border-strong); border-radius: var(--r); background: var(--surface); color: var(--text); min-width: min(100%, 280px); }
 .fichas { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: var(--sp-3); }
-.ficha { display: block; text-align: left; font: inherit; color: var(--text); background: var(--surface-2); border: 1px solid transparent; border-radius: var(--r); padding: var(--sp-3) var(--sp-4); cursor: pointer; }
+.ficha { display: block; text-align: left; font: inherit; color: var(--text); background: transparent; border: 1px solid var(--border); border-radius: var(--r); padding: var(--sp-3) var(--sp-4); cursor: pointer; }
 .ficha:hover, .ficha[aria-current="true"] { border-color: var(--accent); }
 .ficha h3 { margin: 0 0 4px; font-family: var(--mono); font-size: 0.95rem; }
 .ficha p { margin: 0 0 var(--sp-2); font-size: var(--fs-sm); color: var(--muted); }
