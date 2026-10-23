@@ -13,6 +13,11 @@
    Lectura, una vez por visita a la página (<pagina> es index, ficha/workforce, etc.):
      - lectura/15s/<pagina>, lectura/60s/<pagina>  segundos con la pestaña visible
      - scroll/50/<pagina>, scroll/90/<pagina>      avance del scroll (solo si la persona desplaza)
+   Visitantes, una vez por navegador y día en todo el portafolio (los sitios comparten dominio):
+     - visitante/nuevo   primera visita de este navegador
+     - visitante/vuelve  ya había venido otro día
+   Para eso el navegador guarda solo la fecha de su última visita (localStorage "portafolio-ultima-visita"):
+   sin identificador y sin enviarla a ningún lado.
    Eventos propios de cada página: window.analitica.evento("nombre"). Se encolan hasta que carga
    count.js. Elementos con data-evento="nombre" se cuentan al hacer clic.
    Para atribuir el canal, los enlaces al portafolio llevan ?ref=<canal> (cv, carta, linkedin-perfil,
@@ -51,6 +56,16 @@
   // Un evento por visita a la página, aunque la acción se repita (p. ej. cada consulta SQL).
   var hechos = {};
   var unaVez = function (nombre) { if (!hechos[nombre]) { hechos[nombre] = true; enviar(nombre); } };
+
+  // Visitante nuevo o que vuelve. Si el almacenamiento está bloqueado (modo privado, permisos), no se cuenta.
+  try {
+    var hoy = new Date().toLocaleDateString("sv"); // AAAA-MM-DD en hora local
+    var ultima = localStorage.getItem("portafolio-ultima-visita");
+    if (ultima !== hoy) {
+      enviar(ultima ? "visitante/vuelve" : "visitante/nuevo");
+      localStorage.setItem("portafolio-ultima-visita", hoy);
+    }
+  } catch (e) { /* sin almacenamiento: se omite */ }
 
   window.goatcounter = {
     path: function () { return sitio + "/" + id; },
